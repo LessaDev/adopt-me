@@ -4,10 +4,13 @@ const ResultPets = ({ pets }) => {
   return (
     <div className="search">
       {!pets.length ? (
-        <h1>No Pets Found</h1>
+        <div className="loading-pane">
+          <h2 className="loader">🦦</h2>
+        </div>
       ) : (
         pets.map((pet) => (
           <Pet
+            id={pet.id}
             animal={pet.animal}
             name={pet.name}
             breed={pet.breed}
