@@ -5,7 +5,7 @@ const ResultPets = ({ pets }) => {
     <div className="search">
       {!pets.length ? (
         <div className="loading-pane">
-          <h2 className="loader">🦦</h2>
+          <h1>No Pets Found</h1>
         </div>
       ) : (
         pets.map((pet) => (
@@ -15,7 +15,7 @@ const ResultPets = ({ pets }) => {
             name={pet.name}
             breed={pet.breed}
             images={pet.images}
-            location={(`${pet.city}`, `${pet.state}`)}
+            location={`${pet.city}, ${pet.state}`}
             key={pet.id}
           />
         ))
