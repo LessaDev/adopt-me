@@ -1,4 +1,3 @@
-import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
@@ -7,7 +6,6 @@ import Carousel from "./Carousel";
 import ErrorBoundary from "./ErrorBondaury";
 import fetchPet from "./fetchPet";
 import Modal from "./Modal";
-import { PetAPIResponse } from "./APIResponsesTypes";
 
 const Details = () => {
   const { id } = useParams();
@@ -17,7 +15,7 @@ const Details = () => {
   
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
-  const results = useQuery<PetAPIResponse>(["details", id], fetchPet);
+  const results = useQuery(["details", id], fetchPet);
   // eslint-disable-next-line
   const [_, setAdoptedPet] = useContext(AdoptedPetContext);
 
@@ -67,10 +65,10 @@ const Details = () => {
   );
 };
 
-export default function DetailsErrorBoundary(props) {
+export default function DetailsErrorBoundary() {
   return (
     <ErrorBoundary>
-      <Details {...props} />
+      <Details />
     </ErrorBoundary>
   );
 }
